@@ -13,26 +13,26 @@ actor backend{
 
   let users = HashMap.HashMap<Text, Text>(10, Text.equal, Text.hash); // username → passwordHash
 
-  public func signUp(username: Text, password: Text) : async Text {
-    if (users.get(username) != null) {
-      return "Username already exists.";
+    public func signUp(username: Text, password: Text) : async Text {
+      if (users.get(username) != null) {
+        return "Username already exists.";
+      };
+      users.put(username, password); // password is already hashed
+      return "User registered successfully!";
     };
-    users.put(username, password); // ⚠️ Store hash instead in production
-    return "User registered successfully!";
-  };
 
-  public func signIn(username: Text, password: Text) : async Text {
-    switch (users.get(username)) {
-      case null { return "User not found."; };
-      case (?storedPassword) {
-        if (storedPassword == password) {
-          return "Sign-in successful!";
-        } else {
-          return "Invalid password.";
+    public func signIn(username: Text, password: Text) : async Text {
+      switch (users.get(username)) {
+        case null { return "User not found."; };
+        case (?storedPassword) {
+          if (storedPassword == password) { // already comparing hash
+            return "Sign-in successful!";
+          } else {
+            return "Invalid password.";
+          };
         };
       };
     };
-  };
 
   public query func listUsers() : async [Text] {
     Iter.toArray(users.keys());
