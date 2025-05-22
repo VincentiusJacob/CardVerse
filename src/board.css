@@ -1,0 +1,105 @@
+body {
+      margin: 0;
+      height: 100vh;
+      /* background-color: #f0f0f0; */
+      overflow: hidden;
+      position: relative;
+      background-image: url('src/assets/image hack/backgroundPlay.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .card {
+      width: 100px;
+      height: 150px;
+      background: white;
+      border: 2px solid #333;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      cursor: grab;
+      user-select: none;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .snap-back {
+      transition: left 0.3s ease, top 0.3s ease;
+    }
+
+    /* .active-card{
+        margin-bottom: 400px;
+    } */
+
+    .active-card {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 180px;
+    }
+
+    /* first active card, 200px above vertical center */
+    #active1 {
+    top: calc(50vh - 300px);
+    }
+
+    /* second active card, 40px below the first */
+    #active2 {
+    top: calc(50vh - 300px + 240px);
+    }
+
+    .deck {
+  position: absolute;
+  pointer-events: none;    /* clicks/drag pass through */
+  z-index: 5;              /* sits above background cards */
+}
+
+/* top‑left */
+.deck-top-left {
+  top: 10px;               /* distance from top edge */
+  left: 10px;              /* distance from left edge */
+}
+
+/* bottom‑right */
+.deck-bottom-right {
+  bottom: 10px;            /* distance from bottom edge */
+  right: 10px;             /* distance from right edge */
+}
+
+/* size control (adjust as you like) */
+.deck img {
+  width: 180px;
+  height: auto;
+}
+
+.health-img {
+  position: absolute;
+  pointer-events: none;    /* let clicks/drags pass through */
+  z-index: 10;             /* above cards */
+}
+
+.health-img img {
+  display: block;
+  width: 180px;            /* adjust to your image’s natural size */
+  height: auto;
+}
+
+/* top‑right corner */
+.health-top-right {
+  top: 20px;
+  right: 30px;
+}
+
+/* bottom‑left corner */
+.health-bottom-left {
+  bottom: 20px;
+  left: 30px;
+}

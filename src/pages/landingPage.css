@@ -1,32 +1,18 @@
-.landing-page {
-  position: relative;
+.landing-page,
+.about-section {
+  width: 100%;
   height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1; /* Ensure the video is in the background */
-}
-
-.homePage {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  gap: 65%;
+  padding-top: 100px;
 }
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   width: 100%;
-  padding: 4em;
+  padding: 2rem;
+  height: 15%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,8 +22,9 @@
   font-family: 'Cinzel', serif;
   font-optical-sizing: auto;
   font-weight: 700;
-  font-size: 4em;
+  font-size: 3em;
   font-style: normal;
+  margin: 2rem;
   color: white;
 }
 
@@ -50,7 +37,7 @@
 .navbar-options > a {
   text-decoration: none;
   color: white;
-  font-size: 2em;
+  font-size: 1.5rem;
 }
 
 .navbar-buttons {
@@ -65,6 +52,15 @@
   border-radius: 20px;
   color: white;
   background-color: #3b0066;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navbar-buttons button:hover {
+  transform: scale(1.05);
+  background-color: #4b0080;
 }
 
 .navbar-options a {
@@ -86,9 +82,14 @@
 
 .get-started-btn {
   padding: 1.2em 3em;
+  position: absolute;
+  bottom: 20px;
+  left: 45%;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 30px;
-  border: none;
   background: linear-gradient(135deg, #00c6ff, #0072ff);
   font-weight: bold;
   text-transform: uppercase;
@@ -96,9 +97,267 @@
   transition:
     background 0.3s ease,
     transform 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .get-started-btn:hover {
   background: linear-gradient(135deg, #0072ff, #00c6ff);
   transform: scale(1.05);
+}
+
+.about-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4em 2em;
+  color: white;
+}
+
+.about-content {
+  max-width: 900px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparan biar teks jelas */
+  padding: 3em;
+  border-radius: 20px;
+}
+
+.about-content h2 {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  position: relative;
+
+  /* Added transition properties */
+  opacity: 0;
+  transform: translateX(-100px);
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+
+.about-content h2::before,
+.about-content h2::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 2px;
+  background: white;
+  opacity: 0;
+  transition: opacity 1.2s ease 0.3s;
+}
+
+.about-content h2::before {
+  left: -60px;
+}
+
+.about-content h2::after {
+  right: -60px;
+}
+
+/* Added class for when heading becomes visible */
+.about-content h2.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about-content h2.visible::before,
+.about-content h2.visible::after {
+  opacity: 1;
+}
+
+/* Base paragraph styles */
+.about-content p {
+  font-size: 1.3em;
+  line-height: 1.8;
+  opacity: 0;
+}
+
+/* Animation for individual words */
+.animate-word {
+  display: inline-block;
+  opacity: 0;
+  margin-right: 0.3em;
+  transform: translateX(-30px);
+  animation: fadeInWord 0.5s ease forwards;
+}
+
+@keyframes fadeInWord {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* For browsers that don't support the JS animation approach */
+.about-content p.visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+  transition-delay: 0.5s;
+}
+
+/* Enhanced smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+.page-wrapper {
+  scroll-behavior: smooth;
+}
+
+/* Visual indicator for active navigation */
+.navbar-options a.active {
+  position: relative;
+  border-bottom: 3px solid white;
+  color: #00c6ff;
+  font-weight: bold;
+}
+
+/* Animation to flash active nav item */
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* NEWS SECTION */
+
+.news-section {
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  color: white;
+}
+
+.news-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  align-items: center;
+  padding: 3em 5em;
+}
+
+.news-title {
+  font-size: 5em;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #ffb84c;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInTitle 1.5s ease-out forwards;
+  margin-top: 2em;
+}
+
+.news-cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  justify-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInCards 1.5s ease-out 0.5s forwards;
+}
+
+.news-card {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 90%;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.7);
+  color: #fff;
+  transform: scale(1);
+  opacity: 0;
+  animation: fadeInCard 1s ease-in-out forwards;
+}
+
+.news-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.news-card-header h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.news-card-header span {
+  display: block;
+  font-size: 1rem;
+  color: #ffb84c;
+}
+
+.news-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e5e5e5;
+  margin-top: 10px;
+}
+
+.news-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 30px rgba(255, 184, 76, 0.8);
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInCards {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SUPPORT SECTION */
+
+.support-section {
+  width: 100%;
+  height: 100;
+  min-height: 100vh;
 }

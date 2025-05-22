@@ -8,16 +8,16 @@
       }
     },
     "frontend": {
-      "dependencies": ["backend"],
       "type": "assets",
-      "source": ["dist/"]
+      "source": ["dist"],
+      "dependencies": ["backend"]
     }
   },
   "defaults": {
     "build": {
-      "packtool": "npm run --silent sources"
+      "packtool": ""
     }
   },
   "output_env_file": ".env",
-  "version": 2
+  "version": 1
 }
