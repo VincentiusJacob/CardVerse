@@ -1,19 +1,18 @@
 import './landingPage.css';
-import background from '../assets/background-landing.png';
 import { useState } from 'react';
+import video_background from '../assets/animation_background.mp4';
 
 const LandingPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('Home');
 
   return (
-    <div
-      className="landing-page"
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      }}
-    >
+    <div className="landing-page">
+      {/* Video Background (Plays only once) */}
+      <video autoPlay muted className="background-video">
+        <source src={video_background} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <div className="homePage">
         <div className="navbar">
           <h1> CardVerse </h1>
