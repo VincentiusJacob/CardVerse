@@ -4,6 +4,8 @@ import { sha256 } from 'js-sha256';
 import { createActor, canisterId } from './declarations/backend';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/landingPage';
+import Login from './pages/login';
+import SignUp from './pages/signup';
 
 // Create the actor instance
 const backend = createActor(canisterId);
@@ -34,6 +36,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

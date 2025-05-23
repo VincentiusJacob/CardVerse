@@ -1,0 +1,92 @@
+.login-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; /* untuk mencegah overflow dari blur */
+  z-index: 0;
+}
+
+/* Tambahkan background image blur menggunakan pseudo-element */
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/background-landing.png'); /* pastikan path benar */
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px);
+  transform: scale(1.05); /* sedikit perbesar untuk hindari cropping blur */
+  z-index: -1;
+}
+
+.login-card {
+  background-color: rgba(255, 255, 255, 0.85); /* transparan agar background kelihatan */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+
+.login-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.input-icon {
+  margin-right: 0.5rem;
+  color: gray;
+}
+
+.input-field {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.login-button {
+  width: 100%;
+  background: linear-gradient(to right, #0575E6, #00F260);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signup-text {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.signup-link {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}

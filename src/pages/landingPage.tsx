@@ -4,6 +4,7 @@ import AboutUsBackgroundImg from '../assets/aboutUs.png';
 import NewsBackgroundImg from '../assets/background3.png';
 import SupportBackgroundImg from '../assets/support.png';
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const paragraphText = `Immerse yourself in CardVerse, a thrilling and strategic play-to-earn blockchain game where every card is a powerful NFT warrior. Enter intense PvP arenas, build your ultimate deck, and outsmart opponents with unique attack, defense, and skill combinations. Collect rare cards, rise through the ranks, and earn ICP tokens with every victory — all while owning your digital assets on the blockchain.`;
 
@@ -44,6 +45,7 @@ const dummyNews = [
 ];
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState<string>('Home');
   const [isAboutVisible, setIsAboutVisible] = useState<boolean>(false);
 
@@ -115,11 +117,12 @@ const LandingPage = () => {
             ),
           )}
         </div>
-        <div className="navbar-buttons">
-          <button>Sign up</button>
-          <button>Login</button>
+
+          <div className="navbar-buttons">
+            <button onClick={() => navigate('/signup')}>Sign Up</button>
+            <button onClick={() => navigate('/login')}>Login</button>
+          </div>
         </div>
-      </div>
 
       {/* HOME SECTION */}
       <div

@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  height: 100vh;
+  transition: transform 0.5s ease-in-out;
+}
+.container.slide-right {
+  transform: translateX(100%);
+}
+.left-panel {
+  width: 50%;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.right-panel {
+  width: 50%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.input {
+  width: 66%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid gray;
+  outline: none;
+}
+.btn {
+  background: black;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.text {
+  margin-top: 1rem;
+}
+.link {
+  color: blue;
+  cursor: pointer;
+}
