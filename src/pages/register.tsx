@@ -1,28 +1,27 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { backend } from '../ic/backend'; // 🟢 Import koneksi
-import LandingBackgroundImg from '../assets/animation_background.png';
 import './login.css';
+import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { backend } from '../ic/backend'; // 🟢 Import koneksi backend
 
 // Define interface for backend response
 interface BackendResponse {
   message?: string;
   error?: string;
   success?: boolean;
-  token?: string;
-  user?: any;
 }
 
-export default function Login() {
+export default function SignUp() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // State untuk toggle password visibility
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State untuk toggle confirm password visibility
 
-  const handleLogin = async () => {
+  const handleSignup = async () => {
     // Reset message
     setMessage('');
     
@@ -42,18 +41,23 @@ export default function Login() {
       setMessage("Password must be at least 8 characters long");
       return;
     }
+    
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+      return;
+    }
 
     setIsLoading(true);
 
     try {
-      const result = await backend.SignIn(username, password); // 🟢 Call backend login
+      const result = await backend.signUp(username, password);
       
       // Handle different result types
       if (typeof result === 'string') {
         if (result.includes("successful") || result.includes("success")) {
-          setMessage("Login successful!");
+          setMessage("Registration successful!");
           setTimeout(() => {
-            navigate("/main"); // Navigate to main.tsx
+            navigate('/login');
           }, 1500); // Delay navigation to show success message
         } else {
           setMessage(result);
@@ -61,35 +65,31 @@ export default function Login() {
       } else if (typeof result === 'object' && result !== null) {
         // If result is an object, extract the message
         const response = result as BackendResponse;
-        if (response.success || response.token) {
-          setMessage("Login successful!");
+        if (response.success) {
+          setMessage("Registration successful!");
           setTimeout(() => {
-            navigate("/main"); // Navigate to main.tsx
+            navigate('/login');
           }, 1500);
         } else {
-          const errorMessage = response.message || response.error || "Login failed";
+          const errorMessage = response.message || response.error || "Registration failed";
           setMessage(errorMessage);
         }
-      } else if (result === true) {
-        setMessage("Login successful!");
-        setTimeout(() => {
-          navigate("/main"); // Navigate to main.tsx
-        }, 1500);
-      } else if (result === false) {
-        setMessage("Incorrect username or password.");
       } else {
-        setMessage("Incorrect username or password.");
+        setMessage("Registration successful!");
+        setTimeout(() => {
+          navigate('/login');
+        }, 1500);
       }
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("Signup error:", error);
       
       // Handle different error types
       if (error instanceof Error) {
-        setMessage(error.message || "Login failed");
+        setMessage(error.message || "Signup failed");
       } else if (typeof error === 'string') {
         setMessage(error);
       } else {
-        setMessage("Login failed. Please try again.");
+        setMessage("Signup failed. Please try again.");
       }
     } finally {
       setIsLoading(false);
@@ -98,7 +98,7 @@ export default function Login() {
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !isLoading) {
-      handleLogin();
+      handleSignup();
     }
   };
 
@@ -106,10 +106,14 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div className="login-container">
       <div className="login-card">
-        <h2 className="login-title">Sign in</h2>
+        <h2 className="login-title">Sign Up</h2>
         <div className="input-group">
           <FaUser className="input-icon" />
           <input
@@ -143,18 +147,33 @@ export default function Login() {
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </button>
         </div>
-        <div className="login-options">
-          <label className="remember-me">
-            <input type="checkbox" disabled={isLoading} /> Remember me
-          </label>
-          <span className="forgot-password">Forgot Password?</span>
+        <div className="input-group password-group">
+          <FaLock className="input-icon" />
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            onKeyPress={handleKeyPress}
+            className="input-field password-input"
+            disabled={isLoading}
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={toggleConfirmPasswordVisibility}
+            disabled={isLoading}
+            tabIndex={-1}
+          >
+            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+          </button>
         </div>
         <button 
           className="login-button" 
-          onClick={handleLogin}
+          onClick={handleSignup}
           disabled={isLoading}
         >
-          {isLoading ? 'Signing in...' : 'Login'}
+          {isLoading ? 'Signing Up...' : 'Sign Up'}
         </button>
         {message && (
           <p className={`signup-text ${message.includes('successful') ? 'success-message' : 'error-message'}`}>
@@ -162,13 +181,13 @@ export default function Login() {
           </p>
         )}
         <p className="signup-text">
-          Don't have an account?{' '}
+          Already have an account?{' '}
           <span 
             className="signup-link" 
-            onClick={() => !isLoading && navigate('/register')}
+            onClick={() => !isLoading && navigate('/login')}
             style={{ cursor: isLoading ? 'not-allowed' : 'pointer' }}
           >
-            Sign up
+            Login
           </span>
         </p>
       </div>

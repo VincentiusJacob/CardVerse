@@ -5,20 +5,20 @@ import { createActor, canisterId } from './declarations/backend';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/landingPage';
 import Login from './pages/login';
-import SignUp from './pages/signup';
+import Register from './pages/register';
 
 // Create the actor instance
 const backend = createActor(canisterId);
 
-async function handleSignUp(username: string, rawPassword: string) {
+async function handleRegister(username: string, rawPassword: string) {
   const passwordHash = sha256(rawPassword);
-  const response = await backend.signUp(username, passwordHash);
+  const response = await backend.register(username, passwordHash);
   console.log(response);
 }
 
-async function handleSignIn(username: string, rawPassword: string) {
+async function handleLogin(username: string, rawPassword: string) {
   const passwordHash = sha256(rawPassword);
-  const response = await backend.signIn(username, passwordHash);
+  const response = await backend.login(username, passwordHash);
   console.log(response);
 }
 
@@ -36,7 +36,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/Register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>

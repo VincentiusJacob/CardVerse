@@ -90,3 +90,50 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.success-message {
+  color: #4CAF50 !important;
+  font-weight: 500;
+}
+
+.error-message {
+  color: #f44336 !important;
+  font-weight: 500;
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-field:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+/* CSS untuk Password Toggle - Tambahkan ke login.css */
+
+.password-group {
+  position: relative;
+}
+
+.password-input {
+  padding-right: 45px; /* Beri ruang untuk tombol toggle */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  font-size: 16px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
