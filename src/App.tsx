@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/landingPage';
 import Login from './pages/login';
 import Register from './pages/register';
-
+import MainMenu from './pages/Menu';
 // Create the actor instance
 const backend = createActor(canisterId);
 
@@ -38,6 +38,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/MainMenu" element={<MainMenu />} />
       </Routes>
     </Router>
   );

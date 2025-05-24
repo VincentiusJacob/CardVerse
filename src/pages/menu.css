@@ -1,0 +1,443 @@
+/* Layout Containers */
+.main-container {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0f172a, #134e4a, #0f172a);
+}
+
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0f172a, #1e293b, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page Content */
+.page-content {
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+}
+
+.page-description {
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Background Elements */
+.background-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.glow-orb-1 { top: 5rem; left: 2.5rem; width: 4rem; height: 4rem; background-color: #2dd4bf; opacity: 0.6; }
+.glow-orb-2 { top: 8rem; right: 5rem; width: 3rem; height: 3rem; background-color: #7dd3fc; opacity: 0.4; }
+.glow-orb-3 { bottom: 10rem; left: 4rem; width: 5rem; height: 5rem; background-color: #22d3ee; opacity: 0.5; }
+.glow-orb-4 { bottom: 15rem; right: 3rem; width: 3.5rem; height: 3.5rem; background-color: #14b8a6; opacity: 0.3; }
+
+/* Decorative Mushrooms */
+.mushroom-group {
+  position: absolute;
+}
+
+.mushroom-left { bottom: 5rem; left: 2rem; }
+.mushroom-right { bottom: 8rem; right: 4rem; }
+
+.mushroom-container {
+  position: relative;
+}
+
+.mushroom {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.mushroom-large {
+  width: 2rem;
+  height: 3rem;
+  background: linear-gradient(to top, #0d9488, #2dd4bf);
+  opacity: 0.8;
+}
+
+.mushroom-medium {
+  top: -0.5rem;
+  left: 0.25rem;
+  width: 1.5rem;
+  height: 2rem;
+  background: linear-gradient(to top, #06b6d4, #67e8f9);
+  opacity: 0.6;
+}
+
+.mushroom-small {
+  top: 0;
+  left: 0.5rem;
+  width: 1rem;
+  height: 1.5rem;
+  background: linear-gradient(to top, #2dd4bf, #a7f3d0);
+  opacity: 0.4;
+}
+
+.mushroom-medium-alt {
+  width: 1.5rem;
+  height: 2.5rem;
+  background: linear-gradient(to top, #0891b2, #22d3ee);
+  opacity: 0.7;
+}
+
+.mushroom-small-alt {
+  top: -0.25rem;
+  left: 0.125rem;
+  width: 1.25rem;
+  height: 1.75rem;
+  background: linear-gradient(to top, #14b8a6, #5eead4);
+  opacity: 0.5;
+}
+
+/* Moon */
+.moon-container {
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.moon {
+  width: 3rem;
+  height: 3rem;
+  background-color: #fef3c7;
+  border-radius: 50%;
+  position: relative;
+  opacity: 0.8;
+}
+
+.moon-shadow {
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  width: 2.5rem;
+  height: 3rem;
+  background-color: #0f172a;
+  border-radius: 50%;
+}
+
+/* Architecture Decoration */
+.architecture {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24rem;
+  height: 16rem;
+  opacity: 0.3;
+}
+
+.arch-main,
+.arch-left,
+.arch-right {
+  position: absolute;
+  bottom: 0;
+}
+
+.arch-main {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rem;
+  height: 12rem;
+  background: linear-gradient(to top, #374151, #4b5563);
+  border-radius: 50% 50% 0 0;
+}
+
+.arch-left {
+  left: 25%;
+  width: 4rem;
+  height: 8rem;
+  background: linear-gradient(to top, #4b5563, #6b7280);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.arch-right {
+  right: 25%;
+  width: 4rem;
+  height: 8rem;
+  background: linear-gradient(to top, #4b5563, #6b7280);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* Settings Button */
+.settings-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.75rem;
+  background-color: rgba(55, 65, 81, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.settings-button:hover {
+  background-color: rgba(75, 85, 99, 0.5);
+}
+
+/* Main Content Area */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+/* Title Section */
+.title-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.main-title {
+  font-size: 3.75rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.main-subtitle {
+  color: #cbd5e1;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+}
+
+/* Menu Buttons */
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 16rem;
+}
+
+.menu-button {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.menu-button:hover {
+  transform: scale(1.05);
+}
+
+.menu-button-primary {
+  background: linear-gradient(to right, #0d9488, #0891b2);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button-primary:hover {
+  background: linear-gradient(to right, #14b8a6, #0ea5e9);
+  box-shadow: 0 10px 15px -3px rgba(20, 184, 166, 0.25);
+}
+
+.menu-button-secondary {
+  background-color: rgba(55, 65, 81, 0.5);
+  color: white;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.menu-button-secondary:hover {
+  background-color: rgba(75, 85, 99, 0.5);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background-color: #1e293b;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  width: 24rem;
+  border: 1px solid #374151;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: white;
+}
+
+/* Settings Content */
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.setting-label {
+  color: white;
+  font-weight: 500;
+}
+
+.mute-button {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mute-button:hover {
+  color: white;
+}
+
+/* Volume Control */
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.volume-slider {
+  flex: 1;
+  height: 0.5rem;
+  background: #374151;
+  border-radius: 0.25rem;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb,
+.volume-slider::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  background: #0d9488;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover,
+.volume-slider::-moz-range-thumb:hover {
+  background: #14b8a6;
+}
+
+.volume-slider:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.volume-value {
+  min-width: 3rem;
+  text-align: right;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.setting-description {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .menu-buttons {
+    width: 14rem;
+  }
+
+  .modal-content {
+    width: 20rem;
+    margin: 1rem;
+  }
+}

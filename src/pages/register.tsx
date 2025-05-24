@@ -50,7 +50,7 @@ export default function SignUp() {
     setIsLoading(true);
 
     try {
-      const result = await backend.signUp(username, password);
+      const result = await backend.register(username, password);
       
       // Handle different result types
       if (typeof result === 'string') {

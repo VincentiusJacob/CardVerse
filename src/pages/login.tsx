@@ -46,14 +46,14 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const result = await backend.SignIn(username, password); // 🟢 Call backend login
+      const result = await backend.login(username, password); // 🟢 Call backend login
       
       // Handle different result types
       if (typeof result === 'string') {
         if (result.includes("successful") || result.includes("success")) {
           setMessage("Login successful!");
           setTimeout(() => {
-            navigate("/main"); // Navigate to main.tsx
+            navigate('/MainMenu'); // Navigate to main.tsx
           }, 1500); // Delay navigation to show success message
         } else {
           setMessage(result);

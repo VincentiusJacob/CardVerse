@@ -154,7 +154,9 @@ const LandingPage = () => {
             Your browser does not support the video tag.
           </video>
         </div>
-        <button className="get-started-btn">Get Started</button>
+          <button onClick={() => navigate('/register')} className="get-started-btn">
+            Get Started
+          </button>
       </div>
 
       {/* ABOUT SECTION */}
