@@ -137,3 +137,300 @@
   z-index: 2;
   transition: color 0.3s ease;
 }
+
+.ic-login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ic-icon {
+  font-size: 3rem;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.ic-subtitle {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.ic-features {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+}
+
+.connect-button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.connect-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.connect-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Authenticated State */
+.authenticated-state,
+.loading-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.user-icon {
+  font-size: 4rem;
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+.spinner {
+  font-size: 3rem;
+  color: #667eea;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.principal-display {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #666;
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  word-break: break-all;
+}
+
+.disconnect-button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.disconnect-button:hover {
+  background: #c82333;
+}
+
+.status-message {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.info-message {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* Setup Username Styles */
+.setup-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.setup-subtitle {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.principal-info {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #667eea;
+}
+
+.principal-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-field.valid {
+  border-color: #28a745;
+}
+
+.input-field.invalid {
+  border-color: #dc3545;
+}
+
+.validation-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.valid-icon {
+  color: #28a745;
+}
+
+.invalid-icon {
+  color: #dc3545;
+}
+
+.checking-spinner {
+  color: #667eea;
+  animation: spin 1s linear infinite;
+}
+
+.character-count {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.login-button.enabled {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.login-button.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.username-tips {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+}
+
+.username-tips h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.username-tips ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.username-tips li {
+  margin-bottom: 0.25rem;
+}
+
+/* IC Info Section */
+.ic-info {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+}
+
+.ic-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.ic-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.legacy-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .ic-features {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .feature-item {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .principal-display {
+    font-size: 0.75rem;
+  }
+}

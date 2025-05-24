@@ -4,23 +4,12 @@ import { sha256 } from 'js-sha256';
 import { createActor, canisterId } from './declarations/backend';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/landingPage';
-import Login from './pages/login';
-import Register from './pages/register';
-import MainMenu from './pages/Menu';
+import InternetIdentityLogin from './pages/InternetIdentityLogin';
+import MainMenu from './pages/menu';
+import SetupUsername from './pages/SetupUsername';
+
 // Create the actor instance
 const backend = createActor(canisterId);
-
-async function handleRegister(username: string, rawPassword: string) {
-  const passwordHash = sha256(rawPassword);
-  const response = await backend.register(username, passwordHash);
-  console.log(response);
-}
-
-async function handleLogin(username: string, rawPassword: string) {
-  const passwordHash = sha256(rawPassword);
-  const response = await backend.login(username, passwordHash);
-  console.log(response);
-}
 
 function App() {
   const { data: count, refetch } = useQueryCall({
@@ -36,8 +25,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/internetidentitylogin" element={<InternetIdentityLogin />} />
+        <Route path="/setup-username" element={<SetupUsername />} />
         <Route path="/MainMenu" element={<MainMenu />} />
       </Routes>
     </Router>

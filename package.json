@@ -1,7 +1,8 @@
 {
   "name": "vite-react-motoko",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "proxy": "https://ic0.app",
   "type": "module",
   "scripts": {
     "setup": "npm i && dfx canister create backend && dfx generate backend && dfx deploy",

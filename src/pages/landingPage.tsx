@@ -119,8 +119,7 @@ const LandingPage = () => {
         </div>
 
           <div className="navbar-buttons">
-            <button onClick={() => navigate('/register')}>Sign Up</button>
-            <button onClick={() => navigate('/login')}>Login</button>
+            <button onClick={() => navigate('/internetidentitylogin')}>Login</button>
           </div>
         </div>
 
