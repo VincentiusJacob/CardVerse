@@ -27,6 +27,32 @@ actor Backend {
         achievements: [Text];
     };
 
+    // Card info
+    public type Card = {
+    name: Text;
+    attack: Nat;
+    health: Nat;
+    cost: Nat;
+    };
+
+    // Info player pas main
+    public type PlayerState = {
+        health: Nat;
+        hand: [Card];
+        deck: [Card];
+        board: [Card];
+    };
+
+    public type BattleState = {
+        player1: Principal;
+        player2: Principal;
+        currentTurn: Principal;
+        state: {
+            p1: PlayerState;
+            p2: PlayerState;
+        };
+    };
+
     public type UserResult = Result.Result<User, Text>;
     public type CreateUserResult = Result.Result<User, Text>;
 
@@ -34,6 +60,9 @@ actor Backend {
     private stable var usersEntries: [(Principal, User)] = [];
     private var users = HashMap.HashMap<Principal, User>(10, Principal.equal, Principal.hash);
     private var usernames = HashMap.HashMap<Text, Principal>(10, Text.equal, Text.hash); // untuk check duplicate username
+
+    //State main game
+    private var battles = HashMap.HashMap<Principal, BattleState>(10, Principal.equal, Principal.hash);
 
     // Stable storage
     system func preupgrade() {
@@ -203,5 +232,49 @@ actor Backend {
     public query func health(): async Text {
         "Backend updated for Internet Identity with " # Nat.toText(users.size()) # " users";
     };
+
+    // Main Game
+    public func startBattle({caller: Principal}, opponent: Principal): async Result.Result<BattleState, Text> {
+    if (Principal.isAnonymous(caller) or Principal.isAnonymous(opponent)) {
+        return #err("Anonymous not allowed");
+    };
+
+    if (caller == opponent) {
+        return #err("Cannot battle yourself");
+    };
+
+    // deck sementara buat testing
+    let deck: [Card] = [
+        {name="Knight"; attack=3; health=2; cost=1},
+        {name="Archer"; attack=2; health=1; cost=1},
+        {name="Giant"; attack=5; health=5; cost=3},
+    ];
+
+    let state: BattleState = {
+        player1 = caller;
+        player2 = opponent;
+        currentTurn = caller;
+        state = {
+            p1 = {
+                health = 20;
+                hand = [deck[0]];
+                deck = [deck[1], deck[2]];
+                board = [];
+            };
+            p2 = {
+                health = 20;
+                hand = [deck[0]];
+                deck = [deck[1], deck[2]];
+                board = [];
+            };
+        };
+    };
+
+    battles.put(caller, state);
+    battles.put(opponent, state);
+
+    return #ok(state);
+}
+
 
 }
